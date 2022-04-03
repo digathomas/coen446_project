@@ -2,9 +2,6 @@ import shlex
 import paho.mqtt.client as mqtt
 import time
 
-# SET UP
-# install Mosquitto broker at http://www.steves-internet-guide.com/install-mosquitto-broker/
-
 
 class Person:
     def __init__(self, name, temp):
