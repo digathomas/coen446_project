@@ -3,16 +3,16 @@ import paho.mqtt.client as mqtt
 import time
 
 
+# A class defining a Person object,
+# each Person has a name and a temperature preference
 class Person:
     def __init__(self, name, temp):
         self.name = name
         self.temperature_preference = temp
 
 
-#def on_log(client, userdata, level, buf):
-#    print("Log: " + buf)
-
-
+# on_connect is a method attempts to connect to the MQTT broker,
+# and outputs a msg whether we are connected or not.
 def on_connect(client, userdata, flags, rc):
     if rc == 0:
         print("Connected")
@@ -20,10 +20,12 @@ def on_connect(client, userdata, flags, rc):
         print("Connection error ", rc)
 
 
+# on_disconnect is a method that outputs a disconnected msg
 def on_disconnect(client, userdata, flags, rc=0):
     print("Disconnected")
 
 
+# on_message handles the decoded messages coming from the broker.
 def on_message(client, userdata, message):
     if message.topic == "house/management_app":
         if str(message.payload.decode("utf-8")) == "register":
@@ -57,6 +59,7 @@ def on_message(client, userdata, message):
         print_temperature()
 
 
+# print_temperature outputs information about the current temperature
 def print_temperature():
     if len(current_persons) == 0:
         current_temperature = 15
@@ -68,6 +71,7 @@ def print_temperature():
     print("TEMPERATURE: " + str(current_temperature))
 
 
+# print_commands outputs a list of commands and how to use them
 def print_commands():
     print("COMMANDS: ")
     print("[MANAGEMENT APP]")
@@ -83,12 +87,14 @@ def print_commands():
     print("exit : exit program")
 
 
+# print_registered_persons outputs a list of registered persons
 def print_registered_persons():
     print("REGISTERED PERSONS")
     for p in registered_persons:
         print("> " + p.name + ": " + p.temperature_preference)
 
 
+# print_current_persons outputs a list of current persons in the house.
 def print_current_persons():
     print("CURRENT PERSONS")
     for p in current_persons:
@@ -100,11 +106,10 @@ registered_persons = []
 current_persons = []
 
 # set up mqtt client
-broker_url = "test.mosquitto.org"
+broker_url = "test.mosquitto.org"  # retrieve the broker url
 print("Creating new instance")
-client = mqtt.Client("Temperature")
+client = mqtt.Client("Temperature")  # establish the client
 client.on_connect = on_connect
-#client.on_log = on_log
 client.on_message = on_message
 
 # connect to broker
@@ -136,7 +141,7 @@ while 1:
         # simulate register person on app
         if args[0] == "r" and len(args) == 3:
             client.publish("house/management_app", "register")
-        # simulate deregister person on app
+        # simulate de-register person on app
         elif args[0] == "d" and len(args) == 2:
             client.publish("house/management_app", "deregister")
         # simulate person entering room
@@ -158,8 +163,11 @@ while 1:
         # invalid input argument
         else:
             print_commands()
+
     except:
         print("Error")
+        break
 
 client.loop_stop()
+client.on_disconnect = on_disconnect
 client.disconnect()
