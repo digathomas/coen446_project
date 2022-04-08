@@ -10,7 +10,12 @@ Mosquitto
 
 ## installation steps
 1. install paho-mqtt (in the terminal, type this: pip install paho-mqtt)
-1. install Mosquitto broker (http://www.steves-internet-guide.com/install-mosquitto-broker/)
+2. install Mosquitto broker (http://www.steves-internet-guide.com/install-mosquitto-broker/)
+
+## Uninstallation Steps (After we are done)
+# Since PIP installs gloably it would be a good idea to uninstall the packages after we are done with the code
+3. In the terminal where we installed paho-mqtt previously enter `pip uninstall paho-mgtt`
+4. 
 
 ## information of how to compile and run the client, broker and thermostat
 
