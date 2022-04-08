@@ -13,7 +13,7 @@ Mosquitto
 2. install Mosquitto broker (http://www.steves-internet-guide.com/install-mosquitto-broker/)
 
 ## Uninstallation Steps (After we are done)
-# Since PIP installs gloably it would be a good idea to uninstall the packages after we are done with the code
+### Since PIP installs globaly it would be a good idea to uninstall the packages after we are done with the code
 3. In the terminal where we installed paho-mqtt previously, enter `pip uninstall paho-mqtt`
 4. 
 
