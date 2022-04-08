@@ -15,7 +15,7 @@ Mosquitto
 ## Uninstallation Steps (After we are done)
 ### Since PIP installs globaly it would be a good idea to uninstall the packages after we are done with the code
 3. In the terminal where we installed paho-mqtt previously, enter `pip uninstall paho-mqtt`
-4. Run the ununstall exe ![image](https://user-images.githubusercontent.com/77941062/162345588-695fb34e-0ddc-4948-a0ea-1e8a2afd9331.png)
+4. For Mosquitom run the ununstall exe ![image](https://user-images.githubusercontent.com/77941062/162345588-695fb34e-0ddc-4948-a0ea-1e8a2afd9331.png)
 
 
 ## information of how to compile and run the client, broker and thermostat
