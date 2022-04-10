@@ -28,7 +28,11 @@
 1. Install Mosquitto broker (http://www.steves-internet-guide.com/install-mosquitto-broker/)
 
 ## Information of how to compile and run the client, broker and thermostat
+Compilation happens at runtime due to the project being a python project.  
+1. Set run configuration with the installed Python interpreter.
 1. Run main.py, all entities will run with this file.  
+
+## User guide
 1. See all available commands with 'h'.  
 1. Register users to the management app beforehand with 'r'.  
 1. Deregister users from the management app with 'd'.
