@@ -46,7 +46,7 @@ def on_message(client, userdata, message):
                     return
             print("Unable to find: " + args[1])
         if str(message.payload.decode("utf-8")) == "leave":
-            for p in registered_persons:
+            for p in current_persons:
                 if p.name == args[1]:
                     current_persons.remove(p)
                     client.publish("house/thermostat", "update")
